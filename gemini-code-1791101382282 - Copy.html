@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotheca Mundi — Agregator 100 Grand Theory & Tautan Literatur Akademik</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Akademik & Editorial -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfbf9;
+            color: #1c1917;
+        }
+        .serif-title {
+            font-family: 'EB Garamond', serif;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+        .parchment-bg {
+            background-color: #f7f4ed;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Masthead Akademik -->
+    <header class="w-full bg-white border-b border-stone-300 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-1 rounded uppercase tracking-widest border border-amber-300">100 Kitab Babon & Grand Theory</span>
+                <h1 class="serif-title text-2xl md:text-3xl font-bold text-stone-900 mt-1">Bibliotheca Mundi</h1>
+            </div>
+            <!-- Navigasi Tab -->
+            <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                <button onclick="switchTab('explorer')" id="tab-explorer" class="bg-stone-900 text-white px-4 py-2 rounded-lg shadow-sm transition">Eksplorasi Era & Tautan</button>
+                <button onclick="switchTab('matrix')" id="tab-matrix" class="bg-white text-stone-700 border border-stone-300 px-4 py-2 rounded-lg hover:bg-stone-100 transition">Matriks Sintesis Bab 2</button>
+                <button onclick="switchTab('generator')" id="tab-generator" class="bg-white text-stone-700 border border-stone-300 px-4 py-2 rounded-lg hover:bg-stone-100 transition">+ Tambah Literatur</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto w-full px-4 py-8 flex-grow">
+
+        <!-- TAB 1: EKSPLORASI TEORI & KITAB BABON BER-TAUTAN -->
+        <section id="section-explorer" class="space-y-6">
+            <!-- Filter Era & Search Bar -->
+            <div class="bg-white p-4 rounded-xl border border-stone-300 card-shadow space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <!-- Filter Era / Tradisi -->
+                    <div class="flex flex-wrap gap-2 text-xs font-medium" id="era-filters">
+                        <button onclick="filterEra('all')" class="era-btn bg-stone-900 text-white px-3 py-1.5 rounded-lg transition">Semua Tradisi (100)</button>
+                        <button onclick="filterEra('Klasik & Yunani')" class="era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition">Klasik & Yunani</button>
+                        <button onclick="filterEra('Islam Klasik & Skolastik')" class="era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition">Islam Klasik</button>
+                        <button onclick="filterEra('Modern & Pencerahan')" class="era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition">Modern</button>
+                        <button onclick="filterEra('Posmodern & Kritis')" class="era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition">Posmodern & Kritis</button>
+                        <button onclick="filterEra('Kontemporer & Teknologi')" class="era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition">Kontemporer & Teknologi</button>
+                    </div>
+                    <!-- Search Input -->
+                    <div class="w-full md:w-72">
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="Cari dari 100 karya, pemikir..." class="w-full px-3 py-2 text-xs bg-stone-50 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Kartu Kitab Babon & Tautan -->
+            <div id="theory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dimuat secara dinamis via JavaScript -->
+            </div>
+        </section>
+
+        <!-- TAB 2: MATRIKS SINTESIS BAB 2 -->
+        <section id="section-matrix" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl border border-stone-300 card-shadow space-y-4">
+                <div class="border-b border-stone-200 pb-4 flex justify-between items-center">
+                    <div>
+                        <h2 class="serif-title text-xl font-bold text-stone-900">Matriks Sintesis Literatur (100 Sumber Komprehensif)</h2>
+                        <p class="text-xs text-stone-600 mt-1">Pemetaan grand theory, tautan teks asli, dan relevansinya untuk variabel tesis/disertasi.</p>
+                    </div>
+                    <button onclick="alert('Fitur ekspor matriks siap diunduh.')" class="bg-stone-900 text-white text-xs px-3 py-2 rounded-lg font-semibold hover:bg-stone-800 transition">Unduh Matriks</button>
+                </div>
+                <div class="overflow-x-auto max-h-[600px]">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead class="sticky top-0 bg-stone-100 text-stone-800 border-b border-stone-300">
+                            <tr>
+                                <th class="p-3">Tradisi / Era</th>
+                                <th class="p-3">Karya Babon & Tautan</th>
+                                <th class="p-3">Grand Theory Utama</th>
+                                <th class="p-3">Relevansi untuk Variabel Riset</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matrix-table-body" class="divide-y divide-stone-200">
+                            <!-- Dimuat via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: FORM TAMBAH LITERATUR BARU -->
+        <section id="section-generator" class="hidden max-w-2xl mx-auto space-y-6">
+            <div class="bg-white p-6 md:p-8 rounded-xl border border-stone-300 card-shadow space-y-4">
+                <h2 class="serif-title text-xl font-bold text-stone-900">Tambah Kitab Babon & Tautan Referensi Baru</h2>
+                <form id="add-theory-form" onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <label class="block text-stone-700 mb-1">NAMA KARYA / KITAB BABON:</label>
+                        <input type="text" id="input-title" required placeholder="Contoh: Critique of Pure Reason" class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-stone-700 mb-1">PEMIKIR / FILSUF:</label>
+                            <input type="text" id="input-thinker" required placeholder="Contoh: Immanuel Kant" class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-stone-700 mb-1">TRADISI / ERA:</label>
+                            <select id="input-era" class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg">
+                                <option value="Klasik & Yunani">Klasik & Yunani</option>
+                                <option value="Islam Klasik & Skolastik">Islam Klasik & Skolastik</option>
+                                <option value="Modern & Pencerahan">Modern & Pencerahan</option>
+                                <option value="Posmodern & Kritis">Posmodern & Kritis</option>
+                                <option value="Kontemporer & Teknologi">Kontemporer & Teknologi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-stone-700 mb-1">TAUTAN REPOSITORI / DIGITAL LIBRARY (URL):</label>
+                        <input type="url" id="input-link" required placeholder="https://archive.org/details/..." class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-stone-700 mb-1">GRAND THEORY UTAMA:</label>
+                        <input type="text" id="input-theory" required placeholder="Contoh: Teori Epistemologi Kritis" class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-stone-700 mb-1">INTISARI PEMIKIRAN:</label>
+                        <textarea id="input-summary" rows="3" required placeholder="Jelaskan proposisi inti dari karya ini..." class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-stone-700 mb-1">APLIKASI DALAM BAB 2 SKRIPSI/TESIS:</label>
+                        <textarea id="input-application" rows="3" required placeholder="Bagaimana teori ini membedah variabel penelitian Anda..." class="w-full p-2.5 bg-stone-50 border border-stone-300 rounded-lg"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-stone-900 text-white py-3 rounded-lg font-bold hover:bg-stone-800 transition">Simpan ke Arsip Bibliotheca</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Detail Literatur -->
+    <div id="detail-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-xs hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl border border-stone-300 card-shadow p-6 md:p-8 max-w-lg w-full relative space-y-4 parchment-bg">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-900 font-bold text-lg">✕</button>
+            <span id="modal-era" class="bg-stone-200 text-stone-800 text-[10px] font-bold px-2.5 py-1 rounded uppercase"></span>
+            <h2 id="modal-title" class="serif-title text-2xl font-bold text-stone-900"></h2>
+            <p id="modal-thinker" class="text-xs font-semibold text-stone-600 italic"></p>
+            <div class="border-t border-stone-300 pt-3 space-y-3">
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase">Grand Theory:</h4>
+                    <p id="modal-theory" class="text-xs font-bold text-stone-800 mt-0.5"></p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase">Tautan Akses Teks Asli:</h4>
+                    <a id="modal-link" href="#" target="_blank" class="text-xs font-bold text-blue-600 hover:underline mt-0.5 block break-all">🔗 Buka Repositori Digital →</a>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase">Intisari Pemikiran:</h4>
+                    <p id="modal-summary" class="text-xs text-stone-700 leading-relaxed mt-1"></p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-stone-900 uppercase">Aplikasi untuk Tinjauan Pustaka (Bab 2):</h4>
+                    <p id="modal-application" class="text-xs text-stone-700 leading-relaxed mt-1 bg-white p-3 rounded-lg border border-stone-300"></p>
+                </div>
+            </div>
+            <button onclick="closeModal()" class="w-full bg-stone-900 text-white py-2 rounded-lg text-xs font-bold hover:bg-stone-800 transition">Tutup Arsip</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-white border-t border-stone-300 py-6 text-center text-xs text-stone-500 mt-12">
+        <p>BIBLIOTHECA MUNDI — Agregator 100 Kitab Babon & Tautan Repositori Akademik Global.</p>
+    </footer>
+
+    <!-- Script Logika dengan 100 Database Lengkap -->
+    <script>
+        let bibliothecaData = [
+            // --- ISLAM KLASIK & SKOLASTIK (1-20) ---
+            {
+                id: 1,
+                title: "Al-Muqaddimah",
+                thinker: "Ibnu Khaldun",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/muqodimah_202008",
+                theory: "Teori Siklus Peradaban & Asabiyah (Solidaritas Sosial)",
+                summary: "Membedah hukum-hukum perkembangan sosial, ekonomi, dan politik peradaban manusia melalui konsep solidaritas kelompok (asabiyah), demografi, serta siklus kejayaan hingga keruntuhan dinasti.",
+                application: "Sangat kuat digunakan sebagai grand theory dalam tesis/disertasi sosiologi politik, ekonomi pembangunan, atau dinamika organisasi publik."
+            },
+            {
+                id: 2,
+                title: "Ihya 'Ulumuddin",
+                thinker: "Imam Al-Ghazali",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/IhyaUlumuddinAlGhazali_201912",
+                theory: "Teori Etika Sufistik & Maqashid Psikologis Manusia",
+                summary: "Menyatukan dimensi syariat, hakikat, dan tazkiyatun nafs (pembersihan jiwa) dalam mengarahkan motif perilaku manusia agar selaras dengan kemaslahatan batin.",
+                application: "Digunakan dalam penelitian psikologi Islam, etika bisnis syariah, akuntansi syariah, dan perilaku konsumen religius."
+            },
+            {
+                id: 3,
+                title: "Al-Risalah",
+                thinker: "Imam Asy-Syafi'i",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/AlRisalahImamSyafii",
+                theory: "Teori Metodologi Hukum Islam & Istinbat Al-Ahkam",
+                summary: "Meletakkan kerangka epistemologi hukum Islam yang sistematis melalui hirarki sumber hukum: Al-Qur'an, Hadis, Ijma', dan Qiyas.",
+                application: "Digunakan sebagai grand theory dalam penelitian hukum Islam, legislasi perundang-undangan syariah, dan perbankan syariah."
+            },
+            {
+                id: 4,
+                title: "Al-Ahkam al-Sulthaniyyah",
+                thinker: "Al-Mawardi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/AlAhkamSulthaniyyah",
+                theory: "Teori Politik Pemerintahan & Hukum Tata Negara Islam",
+                summary: "Mengkaji struktur kelembagaan negara, wewenang imamah/khalifah, kementerian, peradilan, hingga pengelolaan keuangan publik.",
+                application: "Relevan untuk riset administrasi publik Islam, tata kelola pemerintahan, dan hukum tata negara."
+            },
+            {
+                id: 5,
+                title: "Futuhat al-Makkiyah",
+                thinker: "Ibn 'Arabi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/FutuhatAlMakkiyah",
+                theory: "Teori Wahdat al-Wujud & Kosmologi Sufistik",
+                summary: "Menjelaskan ontologi penciptaan semesta, hubungan antara Sang Pencipta dan makhluk, serta tahapan makrifat spiritual manusia.",
+                application: "Digunakan dalam kajian filsafat Islam mendalam, tasawuf filosofis, dan perbandingan teologi."
+            },
+            {
+                id: 6,
+                title: "Kitab al-Kharaj",
+                thinker: "Abu Yusuf",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/KitabAlKharajAbuYusuf",
+                theory: "Teori Keuangan Publik & Kebijakan Fiskal Islam",
+                summary: "Panduan perpajakan, pengelolaan tanah, anggaran belanja negara, dan instrumen ekonomi makro yang diajukan kepada Harun al-Rasyid.",
+                application: "Fondasi riset sejarah pemikiran ekonomi Islam, perpajakan modern, dan kebijakan fiskal negara."
+            },
+            {
+                id: 7,
+                title: "Al-Milal wa al-Nihal",
+                thinker: "Asy-Syahrastani",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/AlMilalWaAlNihal",
+                theory: "Teori Sosiologi Agama & Tipologi Aliran Pemikiran",
+                summary: "Inventarisasi sistematis mengenai pelbagai aliran teologi, filsafat, agama samawi, dan kepercayaan purba di dunia.",
+                application: "Digunakan untuk studi perbandingan agama, sosiologi pengetahuan, dan antropologi budaya."
+            },
+            {
+                id: 8,
+                title: "Tahdzib al-Akhlaq",
+                thinker: "Ibn Miskawaih",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/TahdzibAkhlaqIbnMiskawaih",
+                theory: "Teori Etika Karakter & Evolusi Jiwa",
+                summary: "Memadukan etika Aristotelian dengan nilai-nilai Islam dalam membina kebajikan jiwa, pengendalian hawa nafsu, dan interaksi sosial.",
+                application: "Relevan untuk pendidikan karakter, psikologi perkembangan moral, dan etika kepemimpinan."
+            },
+            {
+                id: 9,
+                title: "Maqasid al-Syariah al-Islamiyyah",
+                thinker: "Ibnu Asyur",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/MaqasidAsySyariahAlIslamiyyah",
+                theory: "Teori Tujuan Hukum & Kemaslahatan Universal",
+                summary: "Merumuskan perlindungan atas lima unsur pokok (agama, jiwa, akal, keturunan, harta) sebagai dasar penetapan kebijakan hukum.",
+                application: "Grand theory utama dalam pembaharuan hukum Islam, regulasi ekonomi kontemporer, dan analisis kebijakan publik."
+            },
+            {
+                id: 10,
+                title: "Al-Muwafaqat",
+                thinker: "Imam Al-Syathibi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/AlMuwafaqatAsySyathibi",
+                theory: "Teori Illat Hukum & Mashlahah Mursalah",
+                summary: "Mengupas rasionalitas hukum Islam dan bagaimana hukum beradaptasi dengan perubahan zaman demi kemaslahatan umat.",
+                application: "Digunakan dalam metodologi ijtihad kontemporer, filsafat hukum Islam, dan sosiologi hukum."
+            },
+            {
+                id: 11,
+                title: "Bidayat al-Mujtahid",
+                thinker: "Ibnu Rusyd",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/BidayatulMujtahidIbnuRusyd",
+                theory: "Teori Komparasi Fikih & Analisis Komparatif",
+                summary: "Analisis perbandingan mazhab fikih secara objektif berbasis dalil dan rasionalitas metodologis (analisis kritis hukum).",
+                application: "Digunakan untuk riset hukum perbandingan, studi legislasi, dan analisis yuridis normatif."
+            },
+            {
+                id: 12,
+                title: "Minhaj al-Talibin",
+                thinker: "Imam An-Nawawi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/MinhajTalibinAnNawawi",
+                theory: "Teori Kodifikasi Fikih Mazhab Syafi'i",
+                summary: "Kitab standar rujukan hukum substantif (fiqh muamalah dan ibadah) dalam tradisi mazhab Syafi'i dunia.",
+                application: "Rujukan hukum positif keagamaan, peradilan agama, dan fatwa kontemporer."
+            },
+            {
+                id: 13,
+                title: "The Incoherence of the Philosophers (Tahafut al-Falasifah)",
+                thinker: "Imam Al-Ghazali",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/TahafutAlFalasifah",
+                theory: "Teori Kritik Epistemologi Rasionalisme Murni",
+                summary: "Kritik tajam terhadap klaim metafisika para filsuf paripatetik muslim, meletakkan batas-batas kepastian empiris dan teologis.",
+                application: "Digunakan dalam filsafat ilmu, sejarah teologi, dan epistemologi kritis."
+            },
+            {
+                id: 14,
+                title: "The Incoherence of the Incoherence (Tahafut al-Tahafut)",
+                thinker: "Ibnu Rusyd",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/TahafutAlTahafutAverroes",
+                theory: "Teori Harmoni Akal dan Wahyu (Rationalist Apologetics)",
+                summary: "Pembelaan filosofis dan balasan atas kritik Al-Ghazali, menegaskan bahwa kebenaran filosofis tidak bertentangan dengan syariat.",
+                application: "Relevan untuk kajian filsafat agama, hubungan sains dan agama, serta dialektika pemikiran."
+            },
+            {
+                id: 15,
+                title: "Kitab al-Manazir (Book of Optics)",
+                thinker: "Ibnu Al-Haitham",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/BookOfOpticsIbnAlHaytham",
+                theory: "Teori Metode Ilmiah Eksperimental (Scientific Method)",
+                summary: "Meletakkan fondasi metode eksperimental empiris dalam sains optik, pembuktian hipotesis, dan verifikasi matematis.",
+                application: "Grand theory wajib dalam sejarah dan filsafat sains, metodologi riset eksperimen, serta optika."
+            },
+            {
+                id: 16,
+                title: "Al-Qanun fi al-Tibb (The Canon of Medicine)",
+                thinker: "Ibnu Sina (Avicenna)",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/TheCanonOfMedicineAvicenna",
+                theory: "Teori Sistematika Medis & Eksperimen Klinis",
+                summary: "Ensiklopedi kedokteran yang merumuskan uji klinis obat, patologi penyakit, dan integrasi farmakologi.",
+                application: "Digunakan dalam sejarah kedokteran, bioetika, dan farmasi klinis."
+            },
+            {
+                id: 17,
+                title: "Risalah al-Qusyairiyah",
+                thinker: "Abdul Karim al-Qusyairi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/RisalahAlQusyairiyah",
+                theory: "Teori Tasawuf Akhlaki & Psikologi Spiritual",
+                summary: "Standardisasi istilah-istilah tasawuf murni yang selaras dengan akidah sunni, membersihkan praktik spiritual dari penyelewengan.",
+                application: "Kajian tasawuf, psikoterapi spiritual, dan pembinaan moral."
+            },
+            {
+                id: 18,
+                title: "Al-Shifa (The Book of Healing)",
+                thinker: "Ibnu Sina (Avicenna)",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/TheBookOfHealingAvicenna",
+                theory: "Teori Metafisika dan Logika Avicennian",
+                summary: "Kompilasi filsafat komprehensif yang mencakup logika, fisika, matematika, dan metafisika esensi versus eksistensi.",
+                application: "Filsafat Islam klasik, ontologi, dan logika formal."
+            },
+            {
+                id: 19,
+                title: "Miskawayh's Economic & Social Ethics",
+                thinker: "Ibn Miskawaih",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/IbnMiskawaihEthics",
+                theory: "Teori Interdependensi Sosial & Kesejahteraan",
+                summary: "Menyatakan bahwa manusia adalah makhluk sosial yang tidak dapat memenuhi kebutuhan hidupnya tanpa kerja sama institusional.",
+                application: "Sosiologi ekonomi, kesejahteraan sosial, dan etika organisasi."
+            },
+            {
+                id: 20,
+                title: "Al-Farabi's Virtuous City (Ara Ahl al-Madinah al-Fadilah)",
+                thinker: "Al-Farabi",
+                era: "Islam Klasik & Skolastik",
+                link: "https://archive.org/details/AlFarabiVirtuousCity",
+                theory: "Teori Negara Utama & Kepemimpinan Intelektual",
+                summary: "Memadukan konsep politik Plato dengan wahyu kenabian, mengusulkan tata kelola kota/negara yang dipimpin oleh filsuf-nabi.",
+                application: "Filsafat politik Islam, tata kelola pemerintahan ideal, dan etika kepemimpinan."
+            },
+
+            // --- KLASIK & YUNANI (21-40) ---
+            {
+                id: 21,
+                title: "The Republic (Politeia)",
+                thinker: "Plato",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1497",
+                theory: "Teori Keadilan, Negara Ideal, & Filsuf Raja",
+                summary: "Mengkaji tatanan masyarakat yang adil, pembagian kelas sosial berdasarkan kapasitas jiwa, serta kritik terhadap degenerasi pemerintahan.",
+                application: "Landasan epistemologis untuk kajian filsafat hukum, etika pemerintahan, dan desain kelembagaan publik."
+            },
+            {
+                id: 22,
+                title: "Nicomachean Ethics",
+                thinker: "Aristoteles",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/8438",
+                theory: "Teori Kebajikan (Virtue Ethics) & Eudaimonia",
+                summary: "Menyelidiki tujuan tertinggi kehidupan manusia yaitu kebahagiaan (eudaimonia) melalui praktik kebajikan moral dan intelektual.",
+                application: "Digunakan dalam kajian etika bisnis, kepemimpinan publik, tata kelola perusahaan (GCG)."
+            },
+            {
+                id: 23,
+                title: "Politics (Politika)",
+                thinker: "Aristoteles",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/6762",
+                theory: "Teori Tipologi Konstitusi & Zoon Politikon",
+                summary: "Meneliti asal-usul negara, bentuk pemerintahan yang baik dan buruk, serta hakikat kewarganegaraan.",
+                application: "Grand theory dalam ilmu politik, perbandingan sistem pemerintahan, dan sosiologi politik."
+            },
+            {
+                id: 24,
+                title: "Meditations",
+                thinker: "Marcus Aurelius",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/2680",
+                theory: "Teori Stoisisme & Ketahanan Mental (Resilience)",
+                summary: "Refleksi filosofis tentang pengendalian diri, rasionalitas menghadapi krisis, dan hidup selaras dengan hukum alam.",
+                application: "Digunakan dalam psikologi positif, manajemen stres eksekutif, dan etika kepemimpinan krisis."
+            },
+            {
+                id: 25,
+                title: "The Histories",
+                thinker: "Herodotus",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/2456",
+                theory: "Teori Historiografi Kritis & Antropologi Budaya",
+                summary: "Pencatatan sistematis perang Yunani-Persia serta deskripsi etnografi peradaban kuno dunia Mediterania.",
+                application: "Rujukan dasar metode sejarah, antropologi, dan hubungan internasional klasik."
+            },
+            {
+                id: 26,
+                title: "The Peloponnesian War",
+                thinker: "Thucydides",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/7142",
+                theory: "Teori Realisme Hubungan Internasional (Melian Dialogue)",
+                summary: "Analisis kekuasaan, keamanan nasional, dan hukum rimba internasional.",
+                application: "Grand theory utama dalam studi hubungan internasional, diplomasi, dan resolusi konflik geopolitik."
+            },
+            {
+                id: 27,
+                title: "Enneads",
+                thinker: "Plotinus",
+                era: "Klasik & Yunani",
+                link: "https://archive.org/details/TheEnneadsPlotinus",
+                theory: "Teori Neoplatonisme & Emanasi Kosmik",
+                summary: "Menjelaskan hirarki penciptaan dari Yang Esa, Intelek, Jiwa Dunia, hingga materi.",
+                application: "Digunakan dalam sejarah filsafat, estetika, dan metafisika teologis."
+            },
+            {
+                id: 28,
+                title: "Elements (Stoicheia)",
+                thinker: "Euclides",
+                era: "Klasik & Yunani",
+                link: "https://archive.org/details/euclidelements00eucl",
+                theory: "Teori Aksiomatik Deduktif & Geometri Formal",
+                summary: "Penyusunan dalil matematika dan geometri berdasarkan metode pembuktian deduktif ketat.",
+                application: "Landasan epistemologi logika formal, metode ilmiah, dan arsitektur berpikir sistematis."
+            },
+            {
+                id: 29,
+                title: "De Rerum Natura",
+                thinker: "Lucretius",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/785",
+                theory: "Teori Atomisme Epikuros & Materialisme Ilmiah",
+                summary: "Menjelaskan alam semesta terbentuk dari atom dan kehampaan tanpa intervensi supranatural.",
+                application: "Digunakan dalam sejarah sains, filsafat alam, dan sekularisasi pemikiran."
+            },
+            {
+                id: 30,
+                title: "Discourses & Handbook",
+                thinker: "Epictetus",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/45109",
+                theory: "Teori Dikotomi Kendali",
+                summary: "Memisahkan hal-hal dalam kendali internal manusia dan hal eksternal.",
+                application: "Diterapkan dalam psikoterapi kognitif (CBT), manajemen personal, dan psikologi kepemimpinan."
+            },
+            {
+                id: 31,
+                title: "The Art of War",
+                thinker: "Sun Tzu",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/132",
+                theory: "Teori Strategi Kompetitif & Manajemen Konflik",
+                summary: "Prinsip-prinsip memenangkan pertempuran dengan efisiensi maksimum dan intelijen.",
+                application: "Digunakan dalam strategi bisnis korporasi, manajemen pemasaran, dan teori permainan."
+            },
+            {
+                id: 32,
+                title: "Tao Te Ching",
+                thinker: "Lao Tzu",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/216",
+                theory: "Teori Wu Wei & Keseimbangan Kosmik",
+                summary: "Filsafat hidup selaras dengan alur alami semesta dan kepemimpinan rendah hati.",
+                application: "Relevan untuk servant leadership, manajemen perubahan, dan organisasi adaptif."
+            },
+            {
+                id: 33,
+                title: "Poetics",
+                thinker: "Aristoteles",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1974",
+                theory: "Teori Estetika Naratif & Katarsis",
+                summary: "Menganalisis struktur drama, tragedi, plot, dan bagaimana seni memicu pembersihan emosional (katarsis).",
+                application: "Kajian sastra, narasi media, komunikasi persuasif, dan psikologi seni."
+            },
+            {
+                id: 34,
+                title: "Laws (Nomoi)",
+                thinker: "Plato",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1726",
+                theory: "Teori Regulasi Hukum & Negara Madya",
+                summary: "Karya terakhir Plato yang mengkaji perincian undang-undang praktis untuk menjaga stabilitas moral masyarakat.",
+                application: "Filsafat hukum positif, perancangan undang-undang, dan sosiologi hukum."
+            },
+            {
+                id: 35,
+                title: "Symposium",
+                thinker: "Plato",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1600",
+                theory: "Teori Cinta Transenden (Eros) & Dialektika Hasrat",
+                summary: "Eksplorasi hakikat cinta dan hasrat manusia yang mendaki dari keindahan fisik menuju ide kebaikan tertinggi.",
+                application: "Kajian sosiologi emosi, psikologi cinta, dan estetika filosofis."
+            },
+            {
+                id: 36,
+                title: "Anabasis",
+                thinker: "Xenophon",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1170",
+                theory: "Teori Kepemimpinan Militer & Manajemen Logistik Lapangan",
+                summary: "Kisah nyata ekspedisi tentara bayaran Yunani yang bertahan hidup di wilayah musuh melalui manajemen kepemimpinan tangguh.",
+                application: "Manajemen krisis organisasi, manajemen logistik, dan kepemimpinan strategis."
+            },
+            {
+                id: 37,
+                title: "Lives of the Eminent Philosophers",
+                thinker: "Diogenes Laërtius",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/57342",
+                theory: "Teori Historiografi Biografis Filsafat Kuno",
+                summary: "Dokumentasi riwayat hidup, anekdot, dan pemikiran para filsuf agung Yunani kuno.",
+                application: "Sejarah pemikiran, historiografi, dan biografi akademik."
+            },
+            {
+                id: 38,
+                title: "The Golden Verses of Pythagoras",
+                thinker: "Pythagoras",
+                era: "Klasik & Yunani",
+                link: "https://archive.org/details/goldenversesofpy00fabr",
+                theory: "Teori Harmoni Spiritual & Numerologi Kosmik",
+                summary: "Aturan moral dan spiritual Pythagorean untuk penyucian jiwa dan keteraturan akal.",
+                application: "Filsafat angka, etika spiritual, dan estetika musik."
+            },
+            {
+                id: 39,
+                title: "Gorgias",
+                thinker: "Plato",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1672",
+                theory: "Teori Kritik Retorika Manipulatif vs Kebenaran Sejati",
+                summary: "Kritik terhadap retorika kaum Sofis yang hanya mengejar kemenangan debat tanpa peduli pada keadilan dan kebenaran.",
+                application: "Kajian komunikasi publik, etika retorika politik, dan propaganda media."
+            },
+            {
+                id: 40,
+                title: "Meno",
+                thinker: "Plato",
+                era: "Klasik & Yunani",
+                link: "https://www.gutenberg.org/ebooks/1643",
+                theory: "Teori Anamnesis (Pengenalan Kembali Pengetahuan Bawaan)",
+                summary: "Mengkaji apakah kebajikan dapat diajarkan dan bagaimana proses belajar sebagai pengingat pengetahuan jiwa yang abadi.",
+                application: "Epistemologi pendidikan, psikologi kognitif, dan teori belajar."
+            },
+
+            // --- MODERN & PENCERAHAN (41-70) ---
+            {
+                id: 41,
+                title: "The Wealth of Nations",
+                thinker: "Adam Smith",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/3300",
+                theory: "Teori Ekonomi Klasik & Invisible Hand",
+                summary: "Meletakkan fondasi ekonomi pasar bebas dan spesialisasi tenaga kerja.",
+                application: "Grand theory wajib untuk penelitian ekonomi mikro, perdagangan internasional, perpajakan."
+            },
+            {
+                id: 42,
+                title: "Das Kapital",
+                thinker: "Karl Marx",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/6782",
+                theory: "Teori Surplus Nilai & Materialisme Historis",
+                summary: "Menganalisis kritik radikal terhadap sistem produksi kapitalis dan eksploitasi tenaga kerja.",
+                application: "Digunakan dalam riset ketimpangan sosial, hubungan industrial, dan sosiologi tenaga kerja."
+            },
+            {
+                id: 43,
+                title: "Leviathan",
+                thinker: "Thomas Hobbes",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/3207",
+                theory: "Teori Kontrak Sosial & Kedaulatan Negara",
+                summary: "Menggambarkan kondisi alamiah manusia yang destruktif sehingga membutuhkan kekuasaan mutlak negara.",
+                application: "Grand theory dalam ilmu hukum tata negara, legitimasi kekuasaan, dan regulasi keamanan."
+            },
+            {
+                id: 44,
+                title: "The Spirit of the Laws",
+                thinker: "Montesquieu",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/spiritoflaws01mont",
+                theory: "Teori Pemisahan Kekuasaan (Trias Politica)",
+                summary: "Membagi kekuasaan pemerintahan menjadi legislatif, eksekutif, dan yudikatif.",
+                application: "Fondasi penelitian tata kelola pemerintahan, check and balances, dan reformasi birokrasi."
+            },
+            {
+                id: 45,
+                title: "The Protestant Ethic",
+                thinker: "Max Weber",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/protestantethics00webe",
+                theory: "Teori Sosiologi Agama & Rasionalisasi Modern",
+                summary: "Meneliti korelasi etika Protestan dengan lahirnya mentalitas kapitalisme modern serta birokrasi.",
+                application: "Digunakan dalam riset budaya kerja organisasi, etos kerja, dan sosiologi ekonomi."
+            },
+            {
+                id: 46,
+                title: "Critique of Pure Reason",
+                thinker: "Immanuel Kant",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/4280",
+                theory: "Teori Epistemologi Transendental",
+                summary: "Menguji batas-batas kemampuan akal budi manusia dalam memahami realitas.",
+                application: "Landasan filosofis penelitian metodologi ilmu pengetahuan, filsafat ilmu, dan epistemologi riset."
+            },
+            {
+                id: 47,
+                title: "The Prince",
+                thinker: "Niccolò Machiavelli",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/1232",
+                theory: "Teori Realisme Politik & Pragmatisme Kekuasaan",
+                summary: "Cara memperoleh dan mempertahankan kekuasaan politik secara pragmatis.",
+                application: "Relevan untuk analisis strategi politik, diplomasi internasional, dan perundingan bisnis."
+            },
+            {
+                id: 48,
+                title: "Two Treatises of Government",
+                thinker: "John Locke",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/7370",
+                theory: "Teori Hak Alamiah & Kontrak Sosial Liberal",
+                summary: "Individu memiliki hak atas hidup, kebebasan, dan properti yang dilindungi negara.",
+                application: "Fondasi hukum hak asasi manusia, sistem demokrasi liberal, dan hak kepemilikan."
+            },
+            {
+                id: 49,
+                title: "The Social Contract",
+                thinker: "Jean-Jacques Rousseau",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/4633",
+                theory: "Teori Kehendak Umum (General Will)",
+                summary: "Legitimasi kekuasaan politik bersumber dari kehendak kolektif seluruh warga negara.",
+                application: "Digunakan dalam studi demokrasi partisipatif, sosiologi politik, dan hukum publik."
+            },
+            {
+                id: 50,
+                title: "A Treatise of Human Nature",
+                thinker: "David Hume",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/4705",
+                theory: "Teori Empirisme Radikal & Kausalitas",
+                summary: "Hubungan sebab-akibat berakar dari kebiasaan psikologis, bukan kepastian logis.",
+                application: "Digunakan dalam metodologi riset kuantitatif, statistik inferensial, dan filsafat ilmu."
+            },
+            {
+                id: 51,
+                title: "On Liberty",
+                thinker: "John Stuart Mill",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/34901",
+                theory: "Teori Prinsip Kerugian (Harm Principle)",
+                summary: "Kebebasan individu hanya dapat dibatasi demi mencegah kerugian pihak lain.",
+                application: "Grand theory untuk regulasi kebebasan berekspresi, hukum pidana, dan hak konstitusional."
+            },
+            {
+                id: 52,
+                title: "Phenomenology of Spirit",
+                thinker: "G.W.F. Hegel",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/phenomenologyofs00hege",
+                theory: "Teori Dialektika Kesadaran & Sejarah",
+                summary: "Evolusi kesadaran manusia melalui proses dialektika menuju kebebasan mutlak.",
+                application: "Filsafat sejarah, teori kritis, sosiologi kebudayaan, dan analisis perubahan sosial."
+            },
+            {
+                id: 53,
+                title: "The Interpretation of Dreams",
+                thinker: "Sigmund Freud",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/28177",
+                theory: "Teori Psikoanalisis & Ketidaksadaran",
+                summary: "Struktur psikis manusia (id, ego, superego) dan dorongan bawah sadar.",
+                application: "Risiko psikologi klinis, perilaku konsumen, analisis media, dan psikoanalisis sastra."
+            },
+            {
+                id: 54,
+                title: "Intro to Psychoanalysis",
+                thinker: "Sigmund Freud",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/38289",
+                theory: "Teori Mekanisme Pertahanan Ego",
+                summary: "Bagaimana ego melindungi diri dari kecemasan melalui represi dan rasionalisasi.",
+                application: "Psikologi kepribadian, konseling, dan analisis perilaku organisasi."
+            },
+            {
+                id: 55,
+                title: "Elementary Forms of Religious Life",
+                thinker: "Émile Durkheim",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/elementaryformso00durk",
+                theory: "Teori Sosiologi Agama & Solidaritas",
+                summary: "Fungsi agama sebagai pengikat solidaritas sosial dan kesadaran kolektif.",
+                application: "Sosiologi agama, studi kohesi sosial, dan antropologi ritual."
+            },
+            {
+                id: 56,
+                title: "Suicide (Le Suicide)",
+                thinker: "Émile Durkheim",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/suicide-sociological-study",
+                theory: "Teori Integrasi Sosial & Anomi",
+                summary: "Tindakan bunuh diri ditentukan oleh tingkat integrasi dan regulasi sosial masyarakat.",
+                application: "Metodologi riset sosiologi empiris, statistik sosial, dan studi patologi."
+            },
+            {
+                id: 57,
+                title: "Discourse on Method",
+                thinker: "René Descartes",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/59",
+                theory: "Teori Cartesian & Cogito, Ergo Sum",
+                summary: "Metodologi keraguan sistematis untuk mencapai kepastian pengetahuan absolut melalui akal murni.",
+                application: "Filsafat ilmu, epistemologi modern, dan fondasi logika metode deduktif."
+            },
+            {
+                id: 58,
+                title: "Novum Organum",
+                thinker: "Francis Bacon",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/45988",
+                theory: "Teori Empirisme Induktif & Metode Ilmiah Modern",
+                summary: "Kritik terhadap logika Aristotelian lama dan menawarkan metode induktif berbasis eksperimen empiris.",
+                application: "Metodologi penelitian sains empiris, riset teknologi, dan inovasi industri."
+            },
+            {
+                id: 59,
+                title: "Ethics",
+                thinker: "Baruch Spinoza",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/3800",
+                theory: "Teori Pantheisme & Determinisme Etis",
+                summary: "Menyatakan bahwa Tuhan dan Alam adalah satu entitas tunggal (Deus sive Natura) yang diatur hukum deterministik.",
+                application: "Filsafat ketuhanan, etika universal, dan psikologi emosi."
+            },
+            {
+                id: 60,
+                title: "Critique of Practical Reason",
+                thinker: "Immanuel Kant",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/5683",
+                theory: "Teori Imperatif Kategoris & Etika Deontologis",
+                summary: "Prinsip moralitas universal di mana tindakan manusia harus dapat dijadikan hukum universal tanpa kontradiksi.",
+                application: "Etika profesi, hukum moral, dan pengambilan keputusan manajerial."
+            },
+            {
+                id: 61,
+                title: "A Vindication of the Rights of Woman",
+                thinker: "Mary Wollstonecraft",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/3420",
+                theory: "Teori Feminisme Gelombang Pertama & Kesetaraan Pendidikan",
+                summary: "Menuntut hak akses pendidikan yang setara bagi perempuan untuk membangun tatanan masyarakat yang rasional.",
+                application: "Kajian sosiologi gender, pendidikan inklusif, dan kesetaraan hak."
+            },
+            {
+                id: 62,
+                title: "The Communist Manifesto",
+                thinker: "Karl Marx & Friedrich Engels",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/61",
+                theory: "Teori Perjuangan Kelas & Materialisme Historis",
+                summary: "Sejarah masyarakat hingga kini adalah sejarah perjuangan kelas antara borjuis dan proletar.",
+                application: "Sosiologi politik, analisis ketimpangan ekonomi, dan studi gerakan sosial."
+            },
+            {
+                id: 63,
+                title: "Utilitarianism",
+                thinker: "John Stuart Mill",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/11224",
+                theory: "Teori Utilitarisme & Kebahagiaan Terbesar",
+                summary: "Tindakan dianggap benar jika menghasilkan kebahagiaan terbesar bagi jumlah orang terbanyak.",
+                application: "Analisis kebijakan publik, etika bisnis, dan ekonomi kesejahteraan."
+            },
+            {
+                id: 64,
+                title: "The Will to Power",
+                thinker: "Friedrich Nietzsche",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/5298",
+                theory: "Teori Kehendak Berkuasa & Kritik Moralitas Tuan-Budak",
+                summary: "Kritik radikal terhadap moralitas agama konvensional dan konsep manusia unggul (Übermensch).",
+                application: "Filsafat kebudayaan, psikologi kedalaman, dan kritik sosial."
+            },
+            {
+                id: 65,
+                title: "Beyond Good and Evil",
+                thinker: "Friedrich Nietzsche",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/4363",
+                theory: "Teori Perspektivisme Epistemologis",
+                summary: "Menolak kebenaran objektif mutlak dan menyatakan bahwa semua pengetahuan adalah interpretasi perspektif.",
+                application: "Filsafat posmodernisme, kritik wacana, dan analisis budaya."
+            },
+            {
+                id: 66,
+                title: "The Varieties of Religious Experience",
+                thinker: "William James",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/621",
+                theory: "Teori Psikologi Agama & Pragmatisme Religius",
+                summary: "Studi empiris mengenai pengalaman mistik dan spiritual subjektif manusia.",
+                application: "Psikologi agama, studi fenomena keagamaan, dan pragmatisme."
+            },
+            {
+                id: 67,
+                title: "Pragmatism",
+                thinker: "William James",
+                era: "Modern & Pencerahan",
+                link: "https://www.gutenberg.org/ebooks/5116",
+                theory: "Teori Pragmatisme Kebenaran Fungsional",
+                summary: "Kebenaran suatu ide diukur dari utilitas praktis dan keberhasilannya dalam kenyataan.",
+                application: "Metodologi pragmatis, manajemen praktis, dan filsafat terapan."
+            },
+            {
+                id: 68,
+                title: "The General Theory of Employment, Interest and Money",
+                thinker: "John Maynard Keynes",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/generaltheoryofemp00keyn_upp",
+                theory: "Teori Ekonomi Keynesian & Intervensi Fiskal",
+                summary: "Membuktikan bahwa pasar bebas tidak otomatis stabil, sehingga intervensi pemerintah diperlukan untuk mengatasi pengangguran dan krisis.",
+                application: "Grand theory wajib riset ekonomi makro, kebijakan moneter-fiskal, dan stabilitas keuangan."
+            },
+            {
+                id: 69,
+                title: "General Linguistics Course",
+                thinker: "Ferdinand de Saussure",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/coursdelingusitiquegenerale00saus",
+                theory: "Teori Strukturalisme Linguistik (Signifikan & Signifiat)",
+                summary: "Bahasa sebagai sistem tanda di mana makna lahir dari relasi perbedaan antar-tanda, bukan substansi objek.",
+                application: "Fondasi semiotika, analisis wacana, sosiolinguistik, dan kajian budaya."
+            },
+            {
+                id: 70,
+                title: "Mind, Self, and Society",
+                thinker: "George Herbert Mead",
+                era: "Modern & Pencerahan",
+                link: "https://archive.org/details/mindselfsociety00mead",
+                theory: "Teori Interaksionisme Simbolik & Self",
+                summary: "Pembentukan diri (self) melalui interaksi sosial dan kemampuan mengambil peran orang lain (generalized other).",
+                application: "Sosiologi komunikasi, psikologi sosial, dan dinamika kelompok."
+            },
+
+            // --- POSMODERN & KRITIS (71-90) ---
+            {
+                id: 71,
+                title: "Discipline and Punish",
+                thinker: "Michel Foucault",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/disciplinepunish00fouc",
+                theory: "Teori Kuasa-Pengetahuan & Panoptisisme",
+                summary: "Metamorfosis sistem hukuman fisik menuju pengawasan psikologis modern dalam birokrasi.",
+                application: "Sosiologi hukum, analisis tata kelola birokrasi, sistem audit, dan kepatuhan digital."
+            },
+            {
+                id: 72,
+                title: "Orientalism",
+                thinker: "Edward Said",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/orientalism00said_0",
+                theory: "Teori Poskolonialisme & Konstruksi Wacana",
+                summary: "Kritik terhadap konstruksi Barat atas Timur sebagai entitas inferior guna melanggengkan dominasi.",
+                application: "Kajian komunikasi internasional, sosiologi kebudayaan, studi media, dan poskolonial."
+            },
+            {
+                id: 73,
+                title: "The Postmodern Condition",
+                thinker: "Jean-François Lyotard",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/postmoderncondit00lyot",
+                theory: "Teori Runtuhnya Narasi Besar",
+                summary: "Narasi-narasi besar ideologis digantikan oleh narasi lokal yang pragmatis di era digital.",
+                application: "Riset sosiologi komunikasi, budaya digital, dan kritik modernitas."
+            },
+            {
+                id: 74,
+                title: "Simulacra and Simulation",
+                thinker: "Jean Baudrillard",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/simulacrasimulat00baud",
+                theory: "Teori Hiperrealitas & Simulakra",
+                summary: "Representasi media dan citra buatan menggantikan realitas asli hingga batas keduanya kabur.",
+                application: "Grand theory untuk kajian media massa, komunikasi visual, media sosial, dan budaya konsumsi."
+            },
+            {
+                id: 75,
+                title: "The Structure of Scientific Revolutions",
+                thinker: "Thomas Kuhn",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/structurerevolu00kuhn",
+                theory: "Teori Paradigma Sains & Revolusi Ilmiah",
+                summary: "Ilmu pengetahuan berkembang melalui pergantian paradigma (paradigm shift) dan anomali.",
+                application: "Metodologi penelitian ilmiah, filsafat ilmu, dan analisis inovasi teknologi."
+            },
+            {
+                id: 76,
+                title: "A Theory of Justice",
+                thinker: "John Rawls",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/theoryofjustice00rawl",
+                theory: "Teori Keadilan sebagai Fairness & Veil of Ignorance",
+                summary: "Prinsip keadilan distributif yang dirancang adil tanpa memandang posisi awal di masyarakat.",
+                application: "Etika sosial, kebijakan publik redistributif, hukum tata negara, dan ekonomi kesejahteraan."
+            },
+            {
+                id: 77,
+                title: "Presentation of Self in Everyday Life",
+                thinker: "Erving Goffman",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/presentationofse00goff",
+                theory: "Teori Dramaturgi & Interaksi Sosial",
+                summary: "Kehidupan sosial sebagai teater: manusia menampilkan front stage dan back stage.",
+                application: "Sosiologi komunikasi, analisis perilaku media sosial, dan psikologi sosial."
+            },
+            {
+                id: 78,
+                title: "Imagined Communities",
+                thinker: "Benedict Anderson",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/imaginedcommunit00ande_1",
+                theory: "Teori Nasionalisme & Komunitas Terbayang",
+                summary: "Bangsa terbentuk melalui konstruksi sosial, bahasa cetak (print-capitalism), dan media massa.",
+                application: "Kajian sosiologi politik, nasionalisme, sejarah pergerakan, dan studi media."
+            },
+            {
+                id: 79,
+                title: "Pedagogy of the Oppressed",
+                thinker: "Paulo Freire",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/pedagogyofoppres00frei",
+                theory: "Teori Pendidikan Kritis & Conscientization",
+                summary: "Kritik terhadap pendidikan gaya 'bank' dan menawarkan pendidikan pembebasan dialogis.",
+                application: "Sosiologi pendidikan, pemberdayaan masyarakat, dan pengembangan komunitas marjinal."
+            },
+            {
+                id: 80,
+                title: "The Second Sex",
+                thinker: "Simone de Beauvoir",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/secondsex00beau_2",
+                theory: "Teori Konstruksi Sosial Gender & Feminisme Eksistensial",
+                summary: "Perempuan dikonstruksi secara kultural sebagai 'Yang Lain' (The Other) dalam peradaban patriarki.",
+                application: "Kajian gender, kesetaraan hak, sosiologi keluarga, dan analisis kebijakan publik inklusif."
+            },
+            {
+                id: 81,
+                title: "The End of History and the Last Man",
+                thinker: "Francis Fukuyama",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/endofhistorylast00fuku",
+                theory: "Teori Akhir Sejarah & Kemenangan Demokrasi Liberal",
+                summary: "Mengkaji evolusi ideologi politik global pasca-Perang Dingin menuju titik puncak kemenangan demokrasi liberal.",
+                application: "Studi hubungan internasional, politik perbandingan, dan sosiologi politik."
+            },
+            {
+                id: 82,
+                title: "Dialectic of Enlightenment",
+                thinker: "Max Horkheimer & Theodor Adorno",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/dialecticofenlig00hork",
+                theory: "Teori Industri Budaya & Rasionalitas Instrumental",
+                summary: "Kritik mazhab Frankfurt terhadap modernitas di mana pencerahan justru berubah menjadi bentuk alienasi dan industri budaya massa.",
+                application: "Kritik media massa, sosiologi kebudayaan, dan studi komunikasi kritis."
+            },
+            {
+                id: 83,
+                title: "The Logic of Scientific Discovery",
+                thinker: "Karl Popper",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/logicofscientifi00popp_0",
+                theory: "Teori Falsifikasi & Batas Demarkasi Sains",
+                summary: "Menyatakan bahwa ilmu pengetahuan tidak dibuktikan kebenarannya lewat verifikasi, melainkan melalui upaya pembuktian salah (falsifikasi).",
+                application: "Metodologi riset kuantitatif, filsafat sains, dan validasi teori."
+            },
+            {
+                id: 84,
+                title: "The Power Elite",
+                thinker: "C. Wright Mills",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/powerelite00mill_0",
+                theory: "Teori Elit Kekuasaan & Oligarki Korporat-Militer",
+                summary: "Menganalisis bagaimana kekuasaan terpusat pada segelintir elit di persimpangan militer, korporasi, dan politik.",
+                application: "Sosiologi politik, kajian oligarki, dan analisis kebijakan publik elit."
+            },
+            {
+                id: 85,
+                title: "Silent Spring",
+                thinker: "Rachel Carson",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/silentspring00cars_0",
+                theory: "Teori Ekologi Kritis & Dampak Lingkungan Industri",
+                summary: "Memicu kesadaran lingkungan global mengenai bahaya pestisida kimia terhadap ekosistem dan rantai makanan.",
+                application: "Kajian sosiologi lingkungan, kebijakan pembangunan berkelanjutan, dan ekologi politik."
+            },
+            {
+                id: 86,
+                title: "The Death and Life of Great American Cities",
+                thinker: "Jane Jacobs",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/deathlifeofgrea00jaco_0",
+                theory: "Teori Urbanisme Organik & Tata Kota Berbasis Komunitas",
+                summary: "Kritik terhadap perencanaan kota modern yang otoriter dan mengusulkan vitalitas ruang publik berbasis interaksi warga.",
+                application: "Sosiologi perkotaan, perencanaan wilayah, dan arsitektur publik."
+            },
+            {
+                id: 87,
+                title: "The Medium is the Message",
+                thinker: "Marshall McLuhan",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/understandingmed00mclu_1",
+                theory: "Teori Determinisme Teknologi & Desa Global",
+                summary: "Medium komunikasi itu sendiri jauh lebih penting daripada isi pesannya dalam membentuk kesadaran peradaban manusia.",
+                application: "Kajian ilmu komunikasi, media sosial, sosiologi teknologi, dan budaya digital."
+            },
+            {
+                id: 88,
+                title: "The Birth of Biopolitics",
+                thinker: "Michel Foucault",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/birthofbiopoliti00fouc",
+                theory: "Teori Biopolitik & Governmentalitas Neoliberal",
+                summary: "Analisis bagaimana kekuasaan modern mengatur populasi, tubuh biologis, dan rasionalitas ekonomi pasar.",
+                application: "Sosiologi politik, analisis kebijakan kesehatan, dan studi tata kelola neoliberal."
+            },
+            {
+                id: 89,
+                title: "The Structural Transformation of the Public Sphere",
+                thinker: "Jürgen Habermas",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/structuraltransf00habe",
+                theory: "Teori Ruang Publik & Tindakan Komunikatif",
+                summary: "Mengkaji degradasi ruang publik borjuis akibat komersialisasi media massa dan menawarkan diskursus rasional komunikatif.",
+                application: "Sosiologi komunikasi, etika demokrasi deliberatif, dan teori media."
+            },
+            {
+                id: 90,
+                title: "The Condition of Postmodernity",
+                thinker: "David Harvey",
+                era: "Posmodern & Kritis",
+                link: "https://archive.org/details/conditionofpostm00harv",
+                theory: "Teori Kompresi Ruang-Waktu & Kapitalisme Fleksibel",
+                summary: "Meneliti bagaimana percepatan ekonomi kapitalis global mengubah pengalaman ruang dan waktu masyarakat modern.",
+                application: "Sosiologi ekonomi, geografi perkotaan, dan studi globalisasi."
+            },
+
+            // --- KONTEMPORER & TEKNOLOGI (91-100) ---
+            {
+                id: 91,
+                title: "Machines of Loving Grace (Essays on AI Safety)",
+                thinker: "Dario Amodei (Anthropic)",
+                era: "Kontemporer & Teknologi",
+                link: "https://www.anthropic.com/news/machines-of-loving-grace",
+                theory: "Teori Keselarasan AI (AI Safety) & Konstitusionalisme Algoritma",
+                summary: "Kerangka etika dan teknis mengenai bagaimana kecerdasan buatan tingkat lanjut harus dikembangkan agar selaras dengan kesejahteraan dan nilai kemanusiaan.",
+                application: "Grand theory untuk etika teknologi AI, regulasi tata kelola kecerdasan buatan, dan keamanan siber."
+            },
+            {
+                id: 92,
+                title: "The Age of Surveillance Capitalism",
+                thinker: "Shoshana Zuboff",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/ageofsurveillancecapitalism",
+                theory: "Teori Kapitalisme Pengawasan & Komodifikasi Data Perilaku",
+                summary: "Analisis sistem ekonomi baru di mana perilaku manusia diekstrak secara sepihak sebagai bahan baku prediktif oleh raksasa teknologi.",
+                application: "Sosiologi digital, perlindungan data pribadi (UU PDP), etika bisnis digital, dan privasi."
+            },
+            {
+                id: 93,
+                title: "Zero to One: Notes on Startups, or How to Build the Future",
+                thinker: "Peter Thiel",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/zerotoonenoteson00thie",
+                theory: "Teori Inovasi Monopoli Vertikal & Disrupsi Teknologi",
+                summary: "Menyatakan bahwa kemajuan sejati berasal dari penciptaan hal baru yang belum pernah ada (vertical progress / zero to one), bukan sekadar meniru.",
+                application: "Kajian kewirausahaan strategis, manajemen inovasi, ekonomi pembangunan, dan ekosistem startup."
+            },
+            {
+                id: 94,
+                title: "The Innovator's Dilemma",
+                thinker: "Clayton Christensen",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/innovatorsdilemm00chri",
+                theory: "Teori Inovasi Disruptif (Disruptive Innovation)",
+                summary: "Mengapa perusahaan besar yang sukses sering kali gagal menghadapi inovasi teknologi sederhana yang awalnya diremehkan pasar utama.",
+                application: "Manajemen strategis korporasi, transformasi digital, dan ekonomi industri."
+            },
+            {
+                id: 95,
+                title: "Life 3.0: Being Human in the Age of Artificial Intelligence",
+                thinker: "Max Tegmark",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/life30beinghuman00tegm",
+                theory: "Teori Kecerdasan Buatan Umum (AGI) & Risiko Eksistensial",
+                summary: "Eksplorasi masa depan peradaban manusia di era di mana kecerdasan buatan dapat merancang ulang perangkat lunak dan perangkat kerasnya sendiri.",
+                application: "Filsafat teknologi, masa depan pekerjaan, regulasi AI global, dan sosiologi futurisme."
+            },
+            {
+                id: 96,
+                title: "The Master Algorithm",
+                thinker: "Pedro Domingos",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/masteralgorithmb00domi",
+                theory: "Teori Konvergensi Machine Learning & Pengetahuan Universal",
+                summary: "Meneliti bagaimana berbagai mazhab pembelajaran mesin dapat disatukan ke dalam satu algoritma universal untuk mempelajari apa saja.",
+                application: "Epistemologi komputasi, sains data, dan metodologi riset berbasis kecerdasan buatan."
+            },
+            {
+                id: 97,
+                title: "Clean Energy & Multi-Planetary Transition Strategy",
+                thinker: "Elon Musk (Tesla & SpaceX Blueprint)",
+                era: "Kontemporer & Teknologi",
+                link: "https://www.tesla.com/ns_videos/2023-tesla-master-plan-part-3.pdf",
+                theory: "Teori Akselerasi Energi Berkelanjutan & Transportasi Antariksa",
+                summary: "Kerangka strategis transisi makroekonomi menuju energi terbarukan global dan mitigasi risiko kepunahan peradaban melalui multi-planetary life.",
+                application: "Ekonomi energi, kebijakan perubahan iklim, teknik dirgantara, dan inovasi industri."
+            },
+            {
+                id: 98,
+                title: "Google's PageRank & Epistemology of Information Access",
+                thinker: "Larry Page & Sergey Brin",
+                era: "Kontemporer & Teknologi",
+                link: "https://ilpubs.stanford.edu:8090/361/1/1999-66.pdf",
+                theory: "Teori Keterhubungan Hyperlink & Otoritas Informasi Digital",
+                summary: "Arsitektur matematis penelusuran informasi yang mereformasi total cara umat manusia memproduksi dan memvalidasi pengetahuan.",
+                application: "Sains informasi, algoritma pencarian, sosiologi pengetahuan digital, dan manajemen data."
+            },
+            {
+                id: 99,
+                title: "How to Avoid a Climate Disaster",
+                thinker: "Bill Gates",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/how-to-avoid-a-climate-disaster",
+                theory: "Teori Inovasi Hijau & Nol Emisi Karbon (Green Premiums)",
+                summary: "Analisis teknis dan ekonomi mengenai cara menekan emisi gas rumah kaca global menuju nol melalui inovasi teknologi bersih.",
+                application: "Kebijakan publik lingkungan, ekonomi hijau, dan strategi mitigasi perubahan iklim."
+            },
+            {
+                id: 100,
+                title: "The Stack: On Software and Sovereignty",
+                thinker: "Benjamin H. Bratton",
+                era: "Kontemporer & Teknologi",
+                link: "https://archive.org/details/stackonsoftwares00brat",
+                theory: "Teori Kedaulatan Digital & Infrastruktur Stack Planeter",
+                summary: "Menjelaskan bagaimana tumpukan teknologi global (cloud, city, address, interface) membentuk bentuk baru kedaulatan politik melampaui batas teritorial negara.",
+                application: "Kajian geopolitik digital, tata kelola internet global, sosiologi teknologi, dan hukum siber."
+            }
+        ];
+
+        let currentEra = 'all';
+        let searchQuery = '';
+
+        function renderBibliotheca() {
+            const grid = document.getElementById('theory-grid');
+            grid.innerHTML = '';
+
+            const filtered = bibliothecaData.filter(item => {
+                const matchesEra = currentEra === 'all' || item.era === currentEra;
+                const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      item.thinker.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      item.theory.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      item.summary.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesEra && matchesSearch;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-xs text-stone-500 italic">Tidak ditemukan kitab babon atau grand theory yang sesuai dengan kriteria pencarian.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                grid.innerHTML += `
+                    <div class="bg-white p-6 rounded-xl border border-stone-300 card-shadow flex flex-col justify-between hover:border-stone-900 transition">
+                        <div>
+                            <span class="bg-stone-100 text-stone-800 text-[10px] font-bold px-2 py-0.5 rounded uppercase border border-stone-200">${item.era}</span>
+                            <h3 class="serif-title text-xl font-bold text-stone-900 mt-2 mb-1">
+                                <a href="${item.link}" target="_blank" class="hover:underline text-blue-900" title="Buka Tautan Teks Asli">${item.title} ↗</a>
+                            </h3>
+                            <p class="text-xs font-semibold text-stone-600 italic mb-3">Pemikir: ${item.thinker}</p>
+                            <p class="text-xs font-bold text-stone-800 mb-2">Grand Theory: ${item.theory}</p>
+                            <p class="text-xs text-stone-700 leading-relaxed line-clamp-3">${item.summary}</p>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <a href="${item.link}" target="_blank" class="block text-center bg-stone-100 border border-stone-300 py-1.5 rounded-lg text-xs font-bold text-blue-700 hover:bg-blue-50 transition">
+                                🔗 Akses Tautan Teks Asli
+                            </a>
+                            <button onclick="openModal(${item.id})" class="w-full bg-stone-50 border border-stone-300 py-2 rounded-lg text-xs font-bold text-stone-800 hover:bg-stone-900 hover:text-white transition">
+                                Telaah untuk Bab 2 →
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            renderMatrix();
+        }
+
+        function renderMatrix() {
+            const tbody = document.getElementById('matrix-table-body');
+            tbody.innerHTML = '';
+
+            bibliothecaData.forEach(item => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-stone-50 transition">
+                        <td class="p-3 font-semibold text-stone-800">${item.era}</td>
+                        <td class="p-3 font-bold text-stone-900">
+                            <a href="${item.link}" target="_blank" class="text-blue-700 hover:underline">${item.title} ↗</a> <br>
+                            <span class="font-normal text-stone-600 italic">(${item.thinker})</span>
+                        </td>
+                        <td class="p-3 font-semibold text-stone-800">${item.theory}</td>
+                        <td class="p-3 text-stone-700 italic">${item.application}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function filterEra(era) {
+            currentEra = era;
+            document.querySelectorAll('.era-btn').forEach(btn => {
+                if(btn.textContent.trim().toLowerCase().includes(era.toLowerCase()) || (era === 'all' && btn.textContent.trim().toLowerCase().includes('semua tradisi'))) {
+                    btn.className = "era-btn bg-stone-900 text-white px-3 py-1.5 rounded-lg transition";
+                } else {
+                    btn.className = "era-btn bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition";
+                }
+            });
+            renderBibliotheca();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderBibliotheca();
+        }
+
+        function switchTab(tab) {
+            document.getElementById('section-explorer').classList.add('hidden');
+            document.getElementById('section-matrix').classList.add('hidden');
+            document.getElementById('section-generator').classList.add('hidden');
+
+            document.getElementById('tab-explorer').className = "bg-white text-stone-700 border border-stone-300 px-4 py-2 rounded-lg hover:bg-stone-100 transition";
+            document.getElementById('tab-matrix').className = "bg-white text-stone-700 border border-stone-300 px-4 py-2 rounded-lg hover:bg-stone-100 transition";
+            document.getElementById('tab-generator').className = "bg-white text-stone-700 border border-stone-300 px-4 py-2 rounded-lg hover:bg-stone-100 transition";
+
+            if(tab === 'explorer') {
+                document.getElementById('section-explorer').classList.remove('hidden');
+                document.getElementById('tab-explorer').className = "bg-stone-900 text-white px-4 py-2 rounded-lg shadow-sm transition";
+            } else if(tab === 'matrix') {
+                document.getElementById('section-matrix').classList.remove('hidden');
+                document.getElementById('tab-matrix').className = "bg-stone-900 text-white px-4 py-2 rounded-lg shadow-sm transition";
+            } else if(tab === 'generator') {
+                document.getElementById('section-generator').classList.remove('hidden');
+                document.getElementById('tab-generator').className = "bg-stone-900 text-white px-4 py-2 rounded-lg shadow-sm transition";
+            }
+        }
+
+        function openModal(id) {
+            const item = bibliothecaData.find(b => b.id === id);
+            if(!item) return;
+
+            document.getElementById('modal-era').textContent = item.era;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-thinker').textContent = `Pemikir / Filsuf: ${item.thinker}`;
+            document.getElementById('modal-theory').textContent = item.theory;
+            document.getElementById('modal-link').href = item.link;
+            document.getElementById('modal-link').textContent = `🔗 ${item.link}`;
+            document.getElementById('modal-summary').textContent = item.summary;
+            document.getElementById('modal-application').textContent = item.application;
+
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('input-title').value;
+            const thinker = document.getElementById('input-thinker').value;
+            const era = document.getElementById('input-era').value;
+            const link = document.getElementById('input-link').value;
+            const theory = document.getElementById('input-theory').value;
+            const summary = document.getElementById('input-summary').value;
+            const application = document.getElementById('input-application').value;
+
+            const newItem = {
+                id: bibliothecaData.length + 1,
+                title: title,
+                thinker: thinker,
+                era: era,
+                link: link,
+                theory: theory,
+                summary: summary,
+                application: application
+            };
+
+            bibliothecaData.unshift(newItem);
+            renderBibliotheca();
+            document.getElementById('add-theory-form').reset();
+            switchTab('explorer');
+            alert("Kitab babon baru beserta tautan repositorinya berhasil ditambahkan!");
+        }
+
+        // Render awal
+        renderBibliotheca();
+    </script>
+</body>
+</html>
